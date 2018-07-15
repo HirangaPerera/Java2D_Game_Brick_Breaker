@@ -19,6 +19,8 @@ public class GameLogic extends JPanel  implements KeyListener,ActionListener{
 	private int BmoveR;
 	private int BmoveD;
 	private int delay =8;
+	private int balldirW =-1;
+	private int balldirH =-2;
 	private Timer time;
 	
 	public GameLogic() {
@@ -46,8 +48,28 @@ public void paint(Graphics g) {
 
 @Override
 public void actionPerformed(ActionEvent arg0) {
-	// TODO Auto-generated method stub
+
+	ballposW +=balldirW;
+	ballposH+=balldirH;
+	if(ballposW==0) {
+		balldirW = -balldirW;
+	}
+	if(ballposH <0) {
+	balldirH = -balldirH;
+		
+	}
 	
+	
+	if(ballposW  > 670) {
+		balldirW = -balldirW;
+		
+	}
+	
+	if(ballposW <0 && ballposH <0) {
+		
+		ballposW = -balldirW;
+	}
+	repaint();
 }
 
 
